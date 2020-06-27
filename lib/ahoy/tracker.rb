@@ -25,6 +25,7 @@ module Ahoy
         data = {
           visit_token: visit_token,
           user_id: user.try(:id),
+          user_type: user ? user.class.name : nil,
           name: name.to_s,
           properties: properties,
           time: trusted_time(options[:time]),
@@ -53,6 +54,7 @@ module Ahoy
             visit_token: visit_token,
             visitor_token: visitor_token,
             user_id: user.try(:id),
+            user_type: user ? user.class.name : nil,
             started_at: trusted_time(started_at),
           }.merge(visit_properties).select { |_, v| v }
 

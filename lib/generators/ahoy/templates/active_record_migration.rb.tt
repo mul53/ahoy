@@ -8,7 +8,8 @@ class <%= migration_class_name %> < ActiveRecord::Migration<%= migration_version
       # simply remove any you don't want
 
       # user
-      t.references :user
+      t.uuid :user_id
+      t.string :user_type
 
       # standard
       t.string :ip
@@ -48,7 +49,10 @@ class <%= migration_class_name %> < ActiveRecord::Migration<%= migration_version
 
     create_table :ahoy_events do |t|
       t.references :visit
-      t.references :user
+      
+      # user
+      t.uuid :user_id
+      t.string :user_type
 
       t.string :name
       t.<%= properties_type %> :properties
